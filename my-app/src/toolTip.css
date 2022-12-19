@@ -1,0 +1,63 @@
+:root {
+    --cursor: pointer;
+
+    /* Beautify Content { LEAVE EMPTY IF NOT REQUIRED } */
+    --toolTip_content:"Yin-Yang";
+    --toolTip_font-family: ;
+    --toolTip_font-size: 1rem; /* Don't leave empty */
+    --toolTip_content_color:cadetblue;
+    --toolTip_border: 2px solid cadetblue;
+    --toolTip_border-radius: 0.5rem;
+    --toolTip_padding: 0.75rem;
+
+    /* Position Tool-Tip  { LEAVE EMPTY IF NOT REQUIRED } */
+    --toolTip_top: 40%; 
+    --toolTip_bottom: ; 
+    --toolTip_right: ;
+    --toolTip_left: ;
+
+    /* Dimension of Tool-Tip  { LEAVE EMPTY IF NOT REQUIRED } */
+    --toolTip_width: max-content;
+
+    /* Animation of Tool-Tip */
+    --toolTip_transition: all 0.25s ease-in-out;
+    --toolTip_transform-origin: left center;
+    --toolTip_translateX: 30px;
+    --toolTip_scale: 1;
+  }
+
+.targetElement {
+    position: relative; /* target position must be relative */
+    color: cadetblue;
+    padding: 0;
+    margin: 0;
+    font-size: 15rem;
+    cursor: var(--cursor);
+}
+
+.targetElement::after{ 
+    position: absolute; /* target-after position must be relative */
+    content: var(--toolTip_content);
+    font-size: 1rem;
+    border: var(--toolTip_border);
+    border-radius: var(--toolTip_border-radius);
+    padding: var(--toolTip_padding);
+
+    top: var(--toolTip_top);
+    bottom: var(--toolTip_bottom);
+    left: var(--toolTip_right);
+    right: var(--toolTip_left);
+
+    width: var(--toolTip_width);
+    color: var(--toolTip_content_color);
+    font-family: var(--toolTip_font-family);
+    font-size: var(--toolTip_font-size);
+
+    transform: scale(0);
+    transition: var(--toolTip_transition);
+    transform-origin: var(--toolTip_transform-origin);
+}
+
+.targetElement:hover::after{ 
+    transform: scale(var(--toolTip_scale)) translateX(var(--toolTip_translateX));
+}
